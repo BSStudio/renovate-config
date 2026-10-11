@@ -24,6 +24,6 @@ jobs:
           node-version: 24
       # Unpinned on purpose: validate against the schema the hosted app runs.
       - name: Validate presets
-        run: npx --yes --package renovate -- renovate-config-validator --strict --no-global default.json weekly.json monthly.json approve-merges.json node.json
+        run: npx --yes --package renovate -- renovate-config-validator --strict --no-global default.json weekly.json monthly.json approve-merges.json
       - name: Validate repo config
         run: npx --yes --package renovate -- renovate-config-validator --strict --no-global .github/renovate.json

@@ -67,6 +67,17 @@
       "groupSlug": "all-minor-patch-pre-commit"
     },
     {
+      "description": "Node.js runtime: major versions only, never pinned, wherever it is declared (.nvmrc, .node-version, Dockerfiles, dev containers, setup-node inputs). Matches nothing in repos without Node.",
+      "matchDepNames": ["node"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "pinDigest"],
+      "enabled": false
+    },
+    {
+      "description": "One PR for every Node.js runtime bump, so .nvmrc, Dockerfiles and workflows move together.",
+      "matchDepNames": ["node"],
+      "groupName": "Node.js runtime version"
+    },
+    {
       "description": "actions/python-versions: only minor and major bumps matter.",
       "matchManagers": ["github-actions"],
       "matchPackageNames": ["actions/python-versions"],
