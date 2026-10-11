@@ -8,6 +8,7 @@
     ":pinAllExceptPeerDependencies",
     ":semanticCommitTypeAll(chore)",
     ":timezone(Europe/Budapest)",
+    "abandonments:recommended",
     "helpers:pinGitHubActionDigestsToSemver"
   ],
   "configMigration": true,

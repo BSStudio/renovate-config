@@ -22,7 +22,7 @@ Repos follow `main`. A change here reaches every repo on its next Renovate run, 
 
 | Preset | What it does |
 | --- | --- |
-| `default` | Labels, Europe/Budapest timezone, security updates at any time, 3 day minimum release age on registries with release timestamps, SHA-pinned actions, Node.js runtime on majors only, monthly lock file maintenance. Regular updates are not merged automatically; non-major GitHub Actions updates and lock file maintenance merge unattended once checks pass. |
+| `default` | Labels, Europe/Budapest timezone, security updates at any time, 3 day minimum release age on registries with release timestamps, SHA-pinned actions, Node.js runtime on majors only, monthly lock file maintenance, dependencies without a release for a year listed on the Dependency Dashboard. Regular updates are not merged automatically; non-major GitHub Actions updates and lock file maintenance merge unattended once checks pass. |
 | `weekly` | PRs open Friday 18:00 to Saturday 08:00, then nothing changes until the next window. |
 | `monthly` | PRs open on the 1st and 2nd of the month, then nothing changes until the next window. |
 | `approve-merges` | Approving a non-major PR merges it once the required checks pass. |
