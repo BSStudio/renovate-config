@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Node.js runtime: major versions only, one PR across .nvmrc/.node-version, Dockerfiles, workflows and the dev container.",
+  "packageRules": [
+    {
+      "matchDepNames": ["node"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "pinDigest"],
+      "enabled": false
+    },
+    {
+      "matchDepNames": ["node"],
+      "groupName": "Node.js runtime version"
+    }
+  ]
+}

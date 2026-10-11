@@ -1,0 +1,6 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Weekly batch: PRs open Friday evening to Saturday morning, then stay frozen for the weekend review.",
+  "schedule": ["* 18-23 * * 5", "* 0-7 * * 6"],
+  "updateNotScheduled": false
+}

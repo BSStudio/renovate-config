@@ -1,0 +1,6 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Monthly batch: PRs open on the 1st and 2nd, then stay frozen until reviewed.",
+  "schedule": ["* * 1-2 * *"],
+  "updateNotScheduled": false
+}

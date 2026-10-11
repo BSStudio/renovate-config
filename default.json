@@ -1,0 +1,77 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "BSStudio base preset. Every repo extends this plus one schedule profile.",
+  "extends": [
+    "config:recommended",
+    ":disableRateLimiting",
+    ":enablePreCommit",
+    ":pinAllExceptPeerDependencies",
+    ":semanticCommitTypeAll(chore)",
+    ":timezone(Europe/Budapest)",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
+  "configMigration": true,
+  "rebaseWhen": "conflicted",
+  "labels": ["dependencies"],
+  "gitIgnoredAuthors": ["66853113+pre-commit-ci[bot]@users.noreply.github.com"],
+  "osvVulnerabilityAlerts": true,
+  "dependencyDashboardOSVVulnerabilitySummary": "unresolved",
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "schedule": ["at any time"],
+    "minimumReleaseAge": null
+  },
+  "automerge": false,
+  "automergeStrategy": "squash",
+  "platformAutomerge": false,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["* * 1-2 * *"],
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "description": "Wait 3 days before proposing a release. Limited to datasources that publish release timestamps: elsewhere the strict internal checks filter would hold updates back forever.",
+      "matchDatasources": [
+        "npm",
+        "pypi",
+        "maven",
+        "go",
+        "github-tags",
+        "github-releases"
+      ],
+      "minimumReleaseAge": "3 days"
+    },
+    { "matchDatasources": ["npm"], "addLabels": ["javascript"] },
+    { "matchDatasources": ["pypi"], "addLabels": ["python"] },
+    { "matchDatasources": ["maven"], "addLabels": ["java"] },
+    { "matchDatasources": ["go"], "addLabels": ["go"] },
+    { "matchDatasources": ["docker"], "addLabels": ["docker"] },
+    { "matchDatasources": ["helm"], "addLabels": ["helm"] },
+    { "matchManagers": ["github-actions"], "addLabels": ["github_actions"] },
+    { "matchManagers": ["pre-commit"], "addLabels": ["pre-commit"] },
+    {
+      "description": "Non-major action updates in one PR, merged unattended once checks pass. Majors need approval: some workflows run only on main or on tags, so PR checks cannot prove them. depType `action` keeps runtime versions read from setup-* inputs out of this group.",
+      "matchManagers": ["github-actions"],
+      "matchDepTypes": ["action"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
+      "groupName": "all non-major GitHub Actions dependencies",
+      "groupSlug": "all-minor-patch-github-actions",
+      "automerge": true
+    },
+    {
+      "description": "Non-major pre-commit hook updates in one PR (replaces pre-commit.ci's weekly autoupdate PR).",
+      "matchManagers": ["pre-commit"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major pre-commit hooks",
+      "groupSlug": "all-minor-patch-pre-commit"
+    },
+    {
+      "description": "actions/python-versions: only minor and major bumps matter.",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["actions/python-versions"],
+      "matchUpdateTypes": ["patch", "pin"],
+      "enabled": false
+    }
+  ]
+}
