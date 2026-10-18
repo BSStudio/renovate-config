@@ -84,6 +84,11 @@
       "matchPackageNames": ["actions/python-versions"],
       "matchUpdateTypes": ["patch", "pin"],
       "enabled": false
+    },
+    {
+      "description": "requires-python is the range of Python versions a project supports, not a dependency: never pinned or bumped. Raise its floor by hand when dropping a version.",
+      "matchDepTypes": ["requires-python"],
+      "enabled": false
     }
   ]
 }
