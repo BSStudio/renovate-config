@@ -8,22 +8,33 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
   validate:
     name: Validate presets
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Checkout
+      - name: Check out
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+
       - name: Set up Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
+
       # Unpinned on purpose: validate against the schema the hosted app runs.
       - name: Validate presets
         run: npx --yes --package renovate -- renovate-config-validator --strict --no-global default.json weekly.json monthly.json approve-merges.json
+
       - name: Validate repo config
         run: npx --yes --package renovate -- renovate-config-validator --strict --no-global .github/renovate.json
