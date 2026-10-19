@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/BSStudio/.github/main/assets/bss-logo.png" width="40%" alt="Budavári Schönherz Stúdió logo">
+</p>
+
+---
+
 # renovate-config
 
 Shared [Renovate](https://docs.renovatebot.com/) presets for Budavári Schönherz Stúdió repositories.
