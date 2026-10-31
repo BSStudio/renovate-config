@@ -79,6 +79,17 @@
       "groupName": "Node.js runtime version"
     },
     {
+      "description": "@types/node majors only once their Node.js line reaches LTS, as for the runtime: node versioning treats earlier releases as unstable.",
+      "matchPackageNames": ["@types/node"],
+      "versioning": "node"
+    },
+    {
+      "description": "@types/node majors go in the Node.js runtime PR, so the types never run ahead of the runtime.",
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "Node.js runtime version"
+    },
+    {
       "description": "actions/python-versions: only minor and major bumps matter.",
       "matchManagers": ["github-actions"],
       "matchPackageNames": ["actions/python-versions"],
