@@ -33,8 +33,9 @@ jobs:
           node-version: 26
 
       # Unpinned on purpose: validate against the schema the hosted app runs.
+      # Without @latest, npm falls back to the newest release whose engines accept this Node.
       - name: Validate presets
-        run: npx --yes --package renovate -- renovate-config-validator --strict --no-global default.json weekly.json monthly.json approve-merges.json
+        run: npx --yes --package renovate@latest -- renovate-config-validator --strict --no-global default.json weekly.json monthly.json approve-merges.json
 
       - name: Validate repo config
-        run: npx --yes --package renovate -- renovate-config-validator --strict --no-global .github/renovate.json
+        run: npx --yes --package renovate@latest -- renovate-config-validator --strict --no-global .github/renovate.json
