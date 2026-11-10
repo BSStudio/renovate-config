@@ -26,9 +26,11 @@
   "automergeStrategy": "squash",
   "platformAutomerge": false,
   "lockFileMaintenance": {
+    "description": "Opened on the 1st, merged from the 2nd: a merge inside the opening window lets the next run in it open another PR.",
     "enabled": true,
-    "schedule": ["* * 1-2 * *"],
-    "automerge": true
+    "schedule": ["* * 1 * *"],
+    "automerge": true,
+    "automergeSchedule": ["* * 2-31 * *"]
   },
   "packageRules": [
     {
