@@ -5,11 +5,11 @@ Shared Renovate presets for Budavári Schönherz Stúdió's repositories: `defau
 ## Before calling something done
 
 ```bash
-pnpm_config_strict_dep_builds=false pnpm --package=renovate@latest dlx renovate-config-validator --strict --no-global default.json weekly.json monthly.json approve-merges.json
-pnpm_config_strict_dep_builds=false pnpm --package=renovate@latest dlx renovate-config-validator --strict --no-global .github/renovate.json
+pnpm_config_strict_dep_builds=false pnpm --package=renovate@$(pnpm view renovate version) dlx renovate-config-validator --strict --no-global default.json weekly.json monthly.json approve-merges.json
+pnpm_config_strict_dep_builds=false pnpm --package=renovate@$(pnpm view renovate version) dlx renovate-config-validator --strict --no-global .github/renovate.json
 ```
 
-These are the commands `validate.yml` runs with npx; `@latest` validates against the schema the hosted Renovate app runs. pnpm 12 can refuse the install over build scripts in Renovate's dependencies, which the validator doesn't need; the variable turns that off.
+These are the commands `validate.yml` runs with npx, against the newest Renovate release, the schema the hosted Renovate app runs. `pnpm view` resolves that release: a plain `@latest` can reuse an older cached install. pnpm 12 can refuse the install over build scripts in Renovate's dependencies, which the validator doesn't need; the variable turns that off.
 
 ## Commits and branches
 
