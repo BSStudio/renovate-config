@@ -16,7 +16,7 @@
   "labels": ["dependencies"],
   "gitIgnoredAuthors": ["66853113+pre-commit-ci[bot]@users.noreply.github.com"],
   "osvVulnerabilityAlerts": true,
-  "dependencyDashboardOSVVulnerabilitySummary": "unresolved",
+  "dependencyDashboard": { "osvVulnerabilitySummary": "unresolved" },
   "vulnerabilityAlerts": {
     "labels": ["security"],
     "schedule": ["at any time"],
