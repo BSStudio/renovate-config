@@ -9,7 +9,7 @@ pnpm_config_strict_dep_builds=false pnpm --package=renovate@$(pnpm view renovate
 pnpm_config_strict_dep_builds=false pnpm --package=renovate@$(pnpm view renovate version) dlx renovate-config-validator --strict --no-global .github/renovate.json
 ```
 
-These are the commands `validate.yml` runs with npx, against the newest Renovate release, the schema the hosted Renovate app runs. `pnpm view` resolves that release: a plain `@latest` can reuse an older cached install. pnpm 12 can refuse the install over build scripts in Renovate's dependencies, which the validator doesn't need; the variable turns that off.
+These are the commands `validate.yml` runs with npx, against the newest Renovate release; `pnpm view` resolves it, where a plain `@latest` can reuse an older cached install. The hosted Renovate app can run several releases behind, so a preset change also has to be valid on the app's version, which a Renovate job log on developer.mend.io shows. pnpm 12 can refuse the install over build scripts in Renovate's dependencies, which the validator doesn't need; the variable turns that off.
 
 ## Commits and branches
 
